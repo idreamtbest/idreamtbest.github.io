@@ -1,37 +1,53 @@
-## Welcome to GitHub Pages
+##유저
+1. 유저 생성
+POST: /users
 
-You can use the [editor on GitHub](https://github.com/idreamtbest/idreamtbest.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+2. 유저 확인
+GET: /users/{user_id}
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+3. 유저 수정
+PUT: /users/{user_id}
 
-### Markdown
+4. 유저 탈퇴
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+###user
+1. id: String?
+2. fcm_token: String
+3. uuid: String
+4. device_id: String
+5. platform_type: String
+6. createdDate: LocalDateTime
 
-```markdown
-Syntax highlighted code block
 
-# Header 1
-## Header 2
-### Header 3
 
-- Bulleted
-- List
+##캠핑장
+1. 캠핑장 목록
+GET: /campsites (검색 파라미터 추가 할 것)
 
-1. Numbered
-2. List
+###campsite
+1. id: Int
+2. name: String?
+3. address: String?
+4. reservationUrl: String?
+5. createdDate: LocalDateTime
 
-**Bold** and _Italic_ and `Code` text
+##구독
+1. 구독 목록
+GET: /users/{user_id}/subscribed?date=yyyyMMdd
 
-[Link](url) and ![Image](src)
-```
+2. 구독 생성
+POST: /users/{user_id}/subscribed
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+3. 구독 정보
+GET: /users/{user_id}/subscribed/{id}
 
-### Jekyll Themes
+4. 구독 삭제
+DELETE: /users/{user_id}/subscribed/{id}
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/idreamtbest/idreamtbest.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+###subscribed
+1. id: string
+2. userId: string
+3. campsites: Int
+4. date: Date
+5. createdDate: LocalDateTime
+6. -- 대기 인원 -- => 날짜 선택 시
